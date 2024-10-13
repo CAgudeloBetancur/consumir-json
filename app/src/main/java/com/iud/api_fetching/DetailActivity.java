@@ -3,6 +3,7 @@ package com.iud.api_fetching;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.iud.api_fetching.adapter.ProductAdapter;
 import com.iud.api_fetching.adapter.ReviewAdapter;
 import com.iud.api_fetching.model.Category;
@@ -53,6 +55,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private TextView description, name, price, availabilityStatus, warranty;
     private ImageView img;
+    private FloatingActionButton actionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,8 +84,18 @@ public class DetailActivity extends AppCompatActivity {
         availabilityStatus = findViewById(R.id.availabiltyStatus);
         warranty = findViewById(R.id.warranty);
         img = findViewById(R.id.img);
+        actionButton = findViewById(R.id.homeBtn);
 
         recyclerView = findViewById(R.id.review_rv);
+
+        actionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DetailActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 
